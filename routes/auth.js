@@ -63,7 +63,7 @@ router.post('/signin',(req,res)=>{
         bcrypt.compare(password,saveduser.password)
         .then(doMatch=>{
             if(doMatch){
-                //res.json({message:"successfully signed in"})
+                res.json({message:"successfully signed in"})
                 const token = jwt.sign({_id:saveduser._id},JWT_SECRET)
                 const {_id,name,email,followers,following,photo} = saveduser
                 res.json({token,user:{_id,name,email,followers,following,photo}})
